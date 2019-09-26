@@ -25,6 +25,15 @@ public class NacosConsumerController {
         //使用 LoadBalanceClient 和 RestTemplate 结合的方式来访问
         ServiceInstance serviceInstance = loadBalancerClient.choose("nacos-provider");
         String url = String.format("http://%s:%s/echo/%s", serviceInstance.getHost(), serviceInstance.getPort(), appName);
-        return restTemplate.getForObject(url, String.class);
+        return this.restTemplate.getForObject(url, String.class);
     }
+
+    // ribbon形式请求
+    @GetMapping(value = "/echo/app/name2")
+    public String echoRibbon() {
+        return this.restTemplate.getForObject(
+                "http://nacos-provider/echo/" + appName,
+                String.class
+        );
+    };
 }
