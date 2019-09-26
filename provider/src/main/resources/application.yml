@@ -5,6 +5,8 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+#        namespace: 38963eda-85d2-48cc-9b08-fe3a2aa6b62f
+#        cluster-name: SH
 
 server:
   port: 8081
