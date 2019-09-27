@@ -16,7 +16,10 @@ server:
 feign:
   client:
     config:
-      nacos-provider:
+#      nacos-provider:
+#        loggerLevel: full
+      # 全局配置
+      default:
         loggerLevel: full
   sentinel:
     enabled: true
