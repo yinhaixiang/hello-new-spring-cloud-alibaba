@@ -13,7 +13,7 @@ public class ShareService {
 
     public String auditById(Integer id, String message) {
 
-        this.rocketMQTemplate.convertAndSend("add-bonus2", message);
+        this.rocketMQTemplate.convertAndSend("add-bonus", message);
 
         return "ok";
     }
