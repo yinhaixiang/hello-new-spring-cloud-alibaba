@@ -9,9 +9,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/admin/shares")
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+
 public class ShareAdminController {
-    private final ShareService shareService;
+
+    @Autowired
+    private ShareService shareService;
+
     @PutMapping("/audit/{id}")
     public Share auditById(@PathVariable Integer id, @RequestBody ShareAuditDTO auditDTO) {
         System.out.println(auditDTO);

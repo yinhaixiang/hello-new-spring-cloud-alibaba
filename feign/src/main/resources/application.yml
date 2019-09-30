@@ -9,6 +9,13 @@ spring:
       transport:
         port: 8719
         dashboard: localhost:8080
+    stream:
+      rocketmq:
+        binder:
+          namesrv-addr: 127.0.0.1:9876
+      bindings:
+        output:
+          destination: stream-test-topic
 
 server:
   port: 9092
@@ -16,8 +23,8 @@ server:
 feign:
   client:
     config:
-#      nacos-provider:
-#        loggerLevel: full
+      #      nacos-provider:
+      #        loggerLevel: full
       # 全局配置
       default:
         loggerLevel: full
@@ -34,6 +41,7 @@ management:
 logging:
   level:
     com.sean.feign.service.EchoService: debug
+    com.alibaba.nacos: warn
 
 
 rocketmq:
