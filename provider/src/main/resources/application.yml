@@ -5,8 +5,16 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
-#        namespace: 38963eda-85d2-48cc-9b08-fe3a2aa6b62f
-#        cluster-name: SH
+    #        namespace: 38963eda-85d2-48cc-9b08-fe3a2aa6b62f
+    #        cluster-name: SH
+    stream:
+      rocketmq:
+        binder:
+          namesrv-addr: 127.0.0.1:9876
+        bindings:
+          input: {consumer.orderly: true}
+      bindings:
+        input: {destination: stream-test-topic, group: binder-group, consumer.maxAttempts: 1}
 
 server:
   port: 8081
@@ -23,3 +31,8 @@ user:
 
 rocketmq:
   name-server: 127.0.0.1:9876
+
+
+logging:
+  level:
+    com.alibaba.nacos: warn
